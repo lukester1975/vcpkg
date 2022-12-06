@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b83fbbd..2f675d1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -2678,9 +2678,12 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap.h DESTINATION include)
+@@ -2678,9 +2678,14 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap.h DESTINATION include)
  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap-bpf.h DESTINATION include)
  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pcap-namedb.h DESTINATION include)
  
@@ -12,6 +12,8 @@ index b83fbbd..2f675d1 100644
 +# Generate libpcap.pc
 +if(BUILD_SHARED_LIBS)
 +    set(PACKAGE_NAME ${LIBRARY_NAME})
++elseif(MSVC)
++    set(PACKAGE_NAME pcap_static)
 +else()
 +    set(PACKAGE_NAME pcap)
 +endif()
